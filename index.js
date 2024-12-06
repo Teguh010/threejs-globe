@@ -31,26 +31,33 @@ scene.add(line);
 
 // Tambahkan variabel countries di scope global
 let countries;
+let globeContainer = new THREE.Object3D();
+scene.add(globeContainer);
 
-// check here for more datasets ...
-// https://github.com/martynafford/natural-earth-geojson
-// non-geojson datasets: https://www.naturalearthdata.com/downloads/
+// Tambahkan line ke dalam globeContainer, bukan langsung ke scene
+globeContainer.add(line);
+
 fetch('./geojson/ne_110m_land.json')
   .then(response => response.text())
   .then(text => {
     const data = JSON.parse(text);
-    const countries = drawThreeGeo({
+    countries = drawThreeGeo({
       json: data,
       radius: 2,
       materialOptions: {
         color: 0x80FF80,
       },
     });
-    scene.add(countries);
+    // Tambahkan countries ke dalam globeContainer
+    globeContainer.add(countries);
   });
 
 function animate() {
   requestAnimationFrame(animate);
+  
+  // Tambahkan rotasi pada globeContainer
+  globeContainer.rotation.y += 0.009; // Kecepatan rotasi bisa disesuaikan
+  
   renderer.render(scene, camera);
   controls.update();
 }
