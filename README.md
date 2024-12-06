@@ -1,14 +1,11 @@
 # 3D Globe Visualization with Three.js
 
-This repository contains a simple Three.js application that renders a 3D globe. It displays feature outlines on a sphere, surrounded by a starfield, and offers simple user interaction (orbit controls).
 
 ## Features
 
 - **Interactive 3D Globe**: Rotate and zoom the globe using orbit controls.
 - **Country Outlines**: Visualizes feature borders using GeoJSON data.
-- **Starfield Background**: Enhances the visual experience with a starfield effect.
 
-Watch the tutorial on [YouTube](https://youtu.be/f4zncVufL_I)
 
 ### Installation
 
